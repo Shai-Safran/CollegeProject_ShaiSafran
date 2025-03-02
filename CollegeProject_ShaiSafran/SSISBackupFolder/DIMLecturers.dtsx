@@ -1,0 +1,3279 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/30/2024 4:31:01 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="CND35217JD"
+  DTS:CreatorName="CND35217JD\Owner"
+  DTS:DTSID="{B27B5E1A-3F5D-4AE0-AECD-BAE3F64F417C}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5397.1"
+  DTS:LocaleID="1037"
+  DTS:ObjectName="DIMLecturers"
+  DTS:PackageType="5"
+  DTS:VersionBuild="13"
+  DTS:VersionGUID="{62801DB0-6F6D-4DC7-ACC1-CB643ABD2B1E}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DWH"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{E24DE9DA-A695-4FD9-81DB-966998918A15}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DWH">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\DWH\Load DWH"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{CD20721D-D2C2-4FC7-BD1E-CC401EC0E813}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Load DWH"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\DWH\Load DWH\insert DWH"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="insert DWH"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[DIMLecturers]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1255</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\DWH\Load DWH\insert DWH.Connections[OleDbConnection]"
+                      connectionManagerID="{6A4B2EBC-6475-4775-927B-47497EF6EB74}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LocalHost.College_DWH]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\DWH\Load DWH\insert DWH.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\DWH\Load DWH\insert DWH.Inputs[OLE DB Destination Input].Columns[LecturerId]"
+                          cachedDataType="i4"
+                          cachedName="LecturerId"
+                          externalMetadataColumnId="Package\DWH\Load DWH\insert DWH.Inputs[OLE DB Destination Input].ExternalColumns[LecturerId]"
+                          lineageId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].Columns[LecturerId]" />
+                        <inputColumn
+                          refId="Package\DWH\Load DWH\insert DWH.Inputs[OLE DB Destination Input].Columns[Email]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Email"
+                          externalMetadataColumnId="Package\DWH\Load DWH\insert DWH.Inputs[OLE DB Destination Input].ExternalColumns[Email]"
+                          lineageId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].Columns[Email]" />
+                        <inputColumn
+                          refId="Package\DWH\Load DWH\insert DWH.Inputs[OLE DB Destination Input].Columns[BirthDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="BirthDate"
+                          externalMetadataColumnId="Package\DWH\Load DWH\insert DWH.Inputs[OLE DB Destination Input].ExternalColumns[BirthDate]"
+                          lineageId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].Columns[BirthDate]" />
+                        <inputColumn
+                          refId="Package\DWH\Load DWH\insert DWH.Inputs[OLE DB Destination Input].Columns[Gender]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Gender"
+                          externalMetadataColumnId="Package\DWH\Load DWH\insert DWH.Inputs[OLE DB Destination Input].ExternalColumns[Gender]"
+                          lineageId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].Columns[Gender]" />
+                        <inputColumn
+                          refId="Package\DWH\Load DWH\insert DWH.Inputs[OLE DB Destination Input].Columns[Status]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Status"
+                          externalMetadataColumnId="Package\DWH\Load DWH\insert DWH.Inputs[OLE DB Destination Input].ExternalColumns[Status]"
+                          lineageId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].Columns[Status]" />
+                        <inputColumn
+                          refId="Package\DWH\Load DWH\insert DWH.Inputs[OLE DB Destination Input].Columns[WorkingHours]"
+                          cachedDataType="i4"
+                          cachedName="WorkingHours"
+                          externalMetadataColumnId="Package\DWH\Load DWH\insert DWH.Inputs[OLE DB Destination Input].ExternalColumns[WorkingHours]"
+                          lineageId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].Columns[WorkingHours]" />
+                        <inputColumn
+                          refId="Package\DWH\Load DWH\insert DWH.Inputs[OLE DB Destination Input].Columns[Course]"
+                          cachedDataType="wstr"
+                          cachedLength="4000"
+                          cachedName="Course"
+                          externalMetadataColumnId="Package\DWH\Load DWH\insert DWH.Inputs[OLE DB Destination Input].ExternalColumns[Course]"
+                          lineageId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].Columns[Course]" />
+                        <inputColumn
+                          refId="Package\DWH\Load DWH\insert DWH.Inputs[OLE DB Destination Input].Columns[CityId]"
+                          cachedDataType="i4"
+                          cachedName="CityId"
+                          externalMetadataColumnId="Package\DWH\Load DWH\insert DWH.Inputs[OLE DB Destination Input].ExternalColumns[CityId]"
+                          lineageId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].Columns[CityId]" />
+                        <inputColumn
+                          refId="Package\DWH\Load DWH\insert DWH.Inputs[OLE DB Destination Input].Columns[dw_date]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="dw_date"
+                          externalMetadataColumnId="Package\DWH\Load DWH\insert DWH.Inputs[OLE DB Destination Input].ExternalColumns[dw_date]"
+                          lineageId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].Columns[dw_date]" />
+                        <inputColumn
+                          refId="Package\DWH\Load DWH\insert DWH.Inputs[OLE DB Destination Input].Columns[FullName]"
+                          cachedDataType="wstr"
+                          cachedLength="101"
+                          cachedName="FullName"
+                          externalMetadataColumnId="Package\DWH\Load DWH\insert DWH.Inputs[OLE DB Destination Input].ExternalColumns[FullName]"
+                          lineageId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].Columns[FullName]" />
+                        <inputColumn
+                          refId="Package\DWH\Load DWH\insert DWH.Inputs[OLE DB Destination Input].Columns[Phone]"
+                          cachedDataType="wstr"
+                          cachedLength="41"
+                          cachedName="Phone"
+                          externalMetadataColumnId="Package\DWH\Load DWH\insert DWH.Inputs[OLE DB Destination Input].ExternalColumns[Phone]"
+                          lineageId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].Columns[Phone]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\DWH\Load DWH\insert DWH.Inputs[OLE DB Destination Input].ExternalColumns[LecturerId]"
+                          dataType="i4"
+                          name="LecturerId" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\Load DWH\insert DWH.Inputs[OLE DB Destination Input].ExternalColumns[Email]"
+                          dataType="wstr"
+                          length="50"
+                          name="Email" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\Load DWH\insert DWH.Inputs[OLE DB Destination Input].ExternalColumns[BirthDate]"
+                          dataType="dbTimeStamp"
+                          name="BirthDate" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\Load DWH\insert DWH.Inputs[OLE DB Destination Input].ExternalColumns[Gender]"
+                          dataType="wstr"
+                          length="50"
+                          name="Gender" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\Load DWH\insert DWH.Inputs[OLE DB Destination Input].ExternalColumns[Status]"
+                          dataType="wstr"
+                          length="50"
+                          name="Status" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\Load DWH\insert DWH.Inputs[OLE DB Destination Input].ExternalColumns[WorkingHours]"
+                          dataType="i4"
+                          name="WorkingHours" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\Load DWH\insert DWH.Inputs[OLE DB Destination Input].ExternalColumns[Course]"
+                          dataType="wstr"
+                          length="4000"
+                          name="Course" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\Load DWH\insert DWH.Inputs[OLE DB Destination Input].ExternalColumns[CityId]"
+                          dataType="i4"
+                          name="CityId" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\Load DWH\insert DWH.Inputs[OLE DB Destination Input].ExternalColumns[dw_date]"
+                          dataType="dbTimeStamp"
+                          name="dw_date" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\Load DWH\insert DWH.Inputs[OLE DB Destination Input].ExternalColumns[FullName]"
+                          dataType="wstr"
+                          length="101"
+                          name="FullName" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\Load DWH\insert DWH.Inputs[OLE DB Destination Input].ExternalColumns[Phone]"
+                          dataType="wstr"
+                          length="41"
+                          name="Phone" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\DWH\Load DWH\insert DWH.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\DWH\Load DWH\insert DWH.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\DWH\Load DWH\insert DWH.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\DWH\Load DWH\insert DWH.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\DWH\Load DWH\insert DWH.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\DWH\Load DWH\insert DWH.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\DWH\Load DWH\Lookup"
+                  componentClassID="Microsoft.Lookup"
+                  contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+                  description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+                  name="Lookup"
+                  usesDispositions="true"
+                  version="6">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the SQL statement that generates the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[DIMLecturers]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommandParam"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[DIMLecturers]) [refTable]
+where [refTable].[LecturerId] = ?</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the type of connection used to access the reference dataset."
+                      name="ConnectionType"
+                      typeConverter="LookupConnectionType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the cache type of the lookup table."
+                      name="CacheType"
+                      typeConverter="CacheType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                      name="NoMatchBehavior"
+                      typeConverter="LookupNoMatchBehavior">1</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                      name="NoMatchCachePercentage">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                      name="MaxMemoryUsage">25</property>
+                    <property
+                      dataType="System.Int64"
+                      description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                      name="MaxMemoryUsage64">25</property>
+                    <property
+                      dataType="System.String"
+                      description="Indicates whether to reference metadata in an XML format."
+                      name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="LecturerId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Email" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="BirthDate" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Gender" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Status" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="WorkingHours" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Course" dataType="DT_WSTR" length="4000" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CityId" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="dw_date" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="FullName" dataType="DT_WSTR" length="101" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Phone" dataType="DT_WSTR" length="41" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                      name="ParameterMap">#{Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].Columns[LecturerId]};</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1255</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                      name="TreatDuplicateKeysAsError">false</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\DWH\Load DWH\Lookup.Connections[OleDbConnection]"
+                      connectionManagerID="{6A4B2EBC-6475-4775-927B-47497EF6EB74}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LocalHost.College_DWH]"
+                      description="Connection manager used to access lookup data."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\DWH\Load DWH\Lookup.Inputs[Lookup Input]"
+                      name="Lookup Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\DWH\Load DWH\Lookup.Inputs[Lookup Input].Columns[LecturerId]"
+                          cachedDataType="i4"
+                          cachedName="LecturerId"
+                          lineageId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].Columns[LecturerId]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">LecturerId</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\DWH\Load DWH\Lookup.Outputs[Lookup Match Output]"
+                      errorOrTruncationOperation="Lookup"
+                      exclusionGroup="1"
+                      name="Lookup Match Output"
+                      synchronousInputId="Package\DWH\Load DWH\Lookup.Inputs[Lookup Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\DWH\Load DWH\Lookup.Outputs[Lookup No Match Output]"
+                      description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                      exclusionGroup="1"
+                      name="Lookup No Match Output"
+                      synchronousInputId="Package\DWH\Load DWH\Lookup.Inputs[Lookup Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\DWH\Load DWH\Lookup.Outputs[Lookup Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Lookup Error Output"
+                      synchronousInputId="Package\DWH\Load DWH\Lookup.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\DWH\Load DWH\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\DWH\Load DWH\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\DWH\Load DWH\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\DWH\Load DWH\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\DWH\Load DWH\STG"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="STG"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[STG_DIMLecturers]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1255</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\DWH\Load DWH\STG.Connections[OleDbConnection]"
+                      connectionManagerID="{2003A105-5B95-4A54-8579-D169F9706819}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LocalHost.NAYA_MRR_STG]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].Columns[LecturerId]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].ExternalColumns[LecturerId]"
+                          lineageId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].Columns[LecturerId]"
+                          name="LecturerId"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].Columns[Email]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].ExternalColumns[Email]"
+                          length="50"
+                          lineageId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].Columns[Email]"
+                          name="Email"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].Columns[BirthDate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].ExternalColumns[BirthDate]"
+                          lineageId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].Columns[BirthDate]"
+                          name="BirthDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].Columns[Gender]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].ExternalColumns[Gender]"
+                          length="50"
+                          lineageId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].Columns[Gender]"
+                          name="Gender"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].Columns[Status]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].ExternalColumns[Status]"
+                          length="50"
+                          lineageId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].Columns[Status]"
+                          name="Status"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].Columns[WorkingHours]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].ExternalColumns[WorkingHours]"
+                          lineageId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].Columns[WorkingHours]"
+                          name="WorkingHours"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].Columns[Course]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].ExternalColumns[Course]"
+                          length="4000"
+                          lineageId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].Columns[Course]"
+                          name="Course"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].Columns[CityId]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].ExternalColumns[CityId]"
+                          lineageId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].Columns[CityId]"
+                          name="CityId"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].Columns[dw_date]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].ExternalColumns[dw_date]"
+                          lineageId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].Columns[dw_date]"
+                          name="dw_date"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].Columns[FullName]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].ExternalColumns[FullName]"
+                          length="101"
+                          lineageId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].Columns[FullName]"
+                          name="FullName"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].Columns[Phone]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].ExternalColumns[Phone]"
+                          length="41"
+                          lineageId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].Columns[Phone]"
+                          name="Phone"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].ExternalColumns[LecturerId]"
+                          dataType="i4"
+                          name="LecturerId" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].ExternalColumns[Email]"
+                          dataType="wstr"
+                          length="50"
+                          name="Email" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].ExternalColumns[BirthDate]"
+                          dataType="dbTimeStamp"
+                          name="BirthDate" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].ExternalColumns[Gender]"
+                          dataType="wstr"
+                          length="50"
+                          name="Gender" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].ExternalColumns[Status]"
+                          dataType="wstr"
+                          length="50"
+                          name="Status" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].ExternalColumns[WorkingHours]"
+                          dataType="i4"
+                          name="WorkingHours" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].ExternalColumns[Course]"
+                          dataType="wstr"
+                          length="4000"
+                          name="Course" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].ExternalColumns[CityId]"
+                          dataType="i4"
+                          name="CityId" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].ExternalColumns[dw_date]"
+                          dataType="dbTimeStamp"
+                          name="dw_date" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].ExternalColumns[FullName]"
+                          dataType="wstr"
+                          length="101"
+                          name="FullName" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].ExternalColumns[Phone]"
+                          dataType="wstr"
+                          length="41"
+                          name="Phone" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Error Output].Columns[LecturerId]"
+                          dataType="i4"
+                          lineageId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Error Output].Columns[LecturerId]"
+                          name="LecturerId" />
+                        <outputColumn
+                          refId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Error Output].Columns[Email]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Error Output].Columns[Email]"
+                          name="Email" />
+                        <outputColumn
+                          refId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Error Output].Columns[BirthDate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Error Output].Columns[BirthDate]"
+                          name="BirthDate" />
+                        <outputColumn
+                          refId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Error Output].Columns[Gender]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Error Output].Columns[Gender]"
+                          name="Gender" />
+                        <outputColumn
+                          refId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Error Output].Columns[Status]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Error Output].Columns[Status]"
+                          name="Status" />
+                        <outputColumn
+                          refId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Error Output].Columns[WorkingHours]"
+                          dataType="i4"
+                          lineageId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Error Output].Columns[WorkingHours]"
+                          name="WorkingHours" />
+                        <outputColumn
+                          refId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Error Output].Columns[Course]"
+                          dataType="wstr"
+                          length="4000"
+                          lineageId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Error Output].Columns[Course]"
+                          name="Course" />
+                        <outputColumn
+                          refId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Error Output].Columns[CityId]"
+                          dataType="i4"
+                          lineageId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Error Output].Columns[CityId]"
+                          name="CityId" />
+                        <outputColumn
+                          refId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Error Output].Columns[dw_date]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Error Output].Columns[dw_date]"
+                          name="dw_date" />
+                        <outputColumn
+                          refId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Error Output].Columns[FullName]"
+                          dataType="wstr"
+                          length="101"
+                          lineageId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Error Output].Columns[FullName]"
+                          name="FullName" />
+                        <outputColumn
+                          refId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Error Output].Columns[Phone]"
+                          dataType="wstr"
+                          length="41"
+                          lineageId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Error Output].Columns[Phone]"
+                          name="Phone" />
+                        <outputColumn
+                          refId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\DWH\Load DWH\update DWH"
+                  componentClassID="Microsoft.OLEDBCommand"
+                  contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+                  description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+                  name="update DWH"
+                  usesDispositions="true"
+                  version="2">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[DIMLecturers]
+   SET
+      [Email] = ?
+      ,[BirthDate]=?
+      ,[Gender] = ?
+      ,[Status] = ?
+      ,[WorkingHours] = ?
+      ,[Course] = ?
+      ,[CityId] = ?
+      ,[dw_date] = ?
+      ,[FullName] = ?
+      ,[Phone] = ?
+WHERE  [LecturerId] = ?</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1255</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\DWH\Load DWH\update DWH.Connections[OleDbConnection]"
+                      connectionManagerID="{6A4B2EBC-6475-4775-927B-47497EF6EB74}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LocalHost.College_DWH]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\DWH\Load DWH\update DWH.Inputs[OLE DB Command Input]"
+                      errorOrTruncationOperation="Command Execution"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Command Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\DWH\Load DWH\update DWH.Inputs[OLE DB Command Input].Columns[LecturerId]"
+                          cachedDataType="i4"
+                          cachedName="LecturerId"
+                          externalMetadataColumnId="Package\DWH\Load DWH\update DWH.Inputs[OLE DB Command Input].ExternalColumns[Param_10]"
+                          lineageId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].Columns[LecturerId]" />
+                        <inputColumn
+                          refId="Package\DWH\Load DWH\update DWH.Inputs[OLE DB Command Input].Columns[Phone]"
+                          cachedDataType="wstr"
+                          cachedLength="41"
+                          cachedName="Phone"
+                          externalMetadataColumnId="Package\DWH\Load DWH\update DWH.Inputs[OLE DB Command Input].ExternalColumns[Param_9]"
+                          lineageId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].Columns[Phone]" />
+                        <inputColumn
+                          refId="Package\DWH\Load DWH\update DWH.Inputs[OLE DB Command Input].Columns[FullName]"
+                          cachedDataType="wstr"
+                          cachedLength="101"
+                          cachedName="FullName"
+                          externalMetadataColumnId="Package\DWH\Load DWH\update DWH.Inputs[OLE DB Command Input].ExternalColumns[Param_8]"
+                          lineageId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].Columns[FullName]" />
+                        <inputColumn
+                          refId="Package\DWH\Load DWH\update DWH.Inputs[OLE DB Command Input].Columns[dw_date]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="dw_date"
+                          externalMetadataColumnId="Package\DWH\Load DWH\update DWH.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
+                          lineageId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].Columns[dw_date]" />
+                        <inputColumn
+                          refId="Package\DWH\Load DWH\update DWH.Inputs[OLE DB Command Input].Columns[CityId]"
+                          cachedDataType="i4"
+                          cachedName="CityId"
+                          externalMetadataColumnId="Package\DWH\Load DWH\update DWH.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
+                          lineageId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].Columns[CityId]" />
+                        <inputColumn
+                          refId="Package\DWH\Load DWH\update DWH.Inputs[OLE DB Command Input].Columns[Course]"
+                          cachedDataType="wstr"
+                          cachedLength="4000"
+                          cachedName="Course"
+                          externalMetadataColumnId="Package\DWH\Load DWH\update DWH.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                          lineageId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].Columns[Course]" />
+                        <inputColumn
+                          refId="Package\DWH\Load DWH\update DWH.Inputs[OLE DB Command Input].Columns[WorkingHours]"
+                          cachedDataType="i4"
+                          cachedName="WorkingHours"
+                          externalMetadataColumnId="Package\DWH\Load DWH\update DWH.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                          lineageId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].Columns[WorkingHours]" />
+                        <inputColumn
+                          refId="Package\DWH\Load DWH\update DWH.Inputs[OLE DB Command Input].Columns[Status]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Status"
+                          externalMetadataColumnId="Package\DWH\Load DWH\update DWH.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                          lineageId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].Columns[Status]" />
+                        <inputColumn
+                          refId="Package\DWH\Load DWH\update DWH.Inputs[OLE DB Command Input].Columns[Gender]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Gender"
+                          externalMetadataColumnId="Package\DWH\Load DWH\update DWH.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                          lineageId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].Columns[Gender]" />
+                        <inputColumn
+                          refId="Package\DWH\Load DWH\update DWH.Inputs[OLE DB Command Input].Columns[BirthDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="BirthDate"
+                          externalMetadataColumnId="Package\DWH\Load DWH\update DWH.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                          lineageId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].Columns[BirthDate]" />
+                        <inputColumn
+                          refId="Package\DWH\Load DWH\update DWH.Inputs[OLE DB Command Input].Columns[Email]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Email"
+                          externalMetadataColumnId="Package\DWH\Load DWH\update DWH.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                          lineageId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output].Columns[Email]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\DWH\Load DWH\update DWH.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                          dataType="wstr"
+                          length="50"
+                          name="Param_0">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">81</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\DWH\Load DWH\update DWH.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                          dataType="dbTimeStamp"
+                          name="Param_1">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\DWH\Load DWH\update DWH.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                          dataType="wstr"
+                          length="50"
+                          name="Param_2">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\DWH\Load DWH\update DWH.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                          dataType="wstr"
+                          length="50"
+                          name="Param_3">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\DWH\Load DWH\update DWH.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                          dataType="i4"
+                          name="Param_4">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\DWH\Load DWH\update DWH.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                          dataType="wstr"
+                          length="4000"
+                          name="Param_5">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">81</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\DWH\Load DWH\update DWH.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
+                          dataType="i4"
+                          name="Param_6">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\DWH\Load DWH\update DWH.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
+                          dataType="dbTimeStamp"
+                          name="Param_7">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">81</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\DWH\Load DWH\update DWH.Inputs[OLE DB Command Input].ExternalColumns[Param_8]"
+                          dataType="wstr"
+                          length="101"
+                          name="Param_8">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\DWH\Load DWH\update DWH.Inputs[OLE DB Command Input].ExternalColumns[Param_9]"
+                          dataType="wstr"
+                          length="41"
+                          name="Param_9">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\DWH\Load DWH\update DWH.Inputs[OLE DB Command Input].ExternalColumns[Param_10]"
+                          dataType="i4"
+                          name="Param_10">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\DWH\Load DWH\update DWH.Outputs[OLE DB Command Output]"
+                      exclusionGroup="1"
+                      name="OLE DB Command Output"
+                      synchronousInputId="Package\DWH\Load DWH\update DWH.Inputs[OLE DB Command Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\DWH\Load DWH\update DWH.Outputs[OLE DB Command Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Command Error Output"
+                      synchronousInputId="Package\DWH\Load DWH\update DWH.Inputs[OLE DB Command Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\DWH\Load DWH\update DWH.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\DWH\Load DWH\update DWH.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\DWH\Load DWH\update DWH.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\DWH\Load DWH\update DWH.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\DWH\Load DWH.Paths[Lookup Match Output]"
+                  endId="Package\DWH\Load DWH\update DWH.Inputs[OLE DB Command Input]"
+                  name="Lookup Match Output"
+                  startId="Package\DWH\Load DWH\Lookup.Outputs[Lookup Match Output]" />
+                <path
+                  refId="Package\DWH\Load DWH.Paths[Lookup No Match Output]"
+                  endId="Package\DWH\Load DWH\insert DWH.Inputs[OLE DB Destination Input]"
+                  name="Lookup No Match Output"
+                  startId="Package\DWH\Load DWH\Lookup.Outputs[Lookup No Match Output]" />
+                <path
+                  refId="Package\DWH\Load DWH.Paths[OLE DB Source Output]"
+                  endId="Package\DWH\Load DWH\Lookup.Inputs[Lookup Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\DWH\Load DWH\STG.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\MRR"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{725bfb13-4a36-48f2-9410-0273bcab9f74}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="MRR">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\MRR\Loading MRR"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{92081741-e78d-4ec7-8c45-9ad5c9d16a4a}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Loading MRR"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\MRR\Loading MRR\MRR"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="MRR"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[MRR_KLecturersTbl]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1255</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\MRR\Loading MRR\MRR.Connections[OleDbConnection]"
+                      connectionManagerID="{2003A105-5B95-4A54-8579-D169F9706819}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LocalHost.NAYA_MRR_STG]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\MRR\Loading MRR\MRR.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\MRR\Loading MRR\MRR.Inputs[OLE DB Destination Input].Columns[id]"
+                          cachedDataType="i4"
+                          cachedName="id"
+                          externalMetadataColumnId="Package\MRR\Loading MRR\MRR.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                          lineageId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].Columns[id]" />
+                        <inputColumn
+                          refId="Package\MRR\Loading MRR\MRR.Inputs[OLE DB Destination Input].Columns[KLastNameFld]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="KLastNameFld"
+                          externalMetadataColumnId="Package\MRR\Loading MRR\MRR.Inputs[OLE DB Destination Input].ExternalColumns[KLastNameFld]"
+                          lineageId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].Columns[KLastNameFld]" />
+                        <inputColumn
+                          refId="Package\MRR\Loading MRR\MRR.Inputs[OLE DB Destination Input].Columns[KFirstNameFld]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="KFirstNameFld"
+                          externalMetadataColumnId="Package\MRR\Loading MRR\MRR.Inputs[OLE DB Destination Input].ExternalColumns[KFirstNameFld]"
+                          lineageId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].Columns[KFirstNameFld]" />
+                        <inputColumn
+                          refId="Package\MRR\Loading MRR\MRR.Inputs[OLE DB Destination Input].Columns[KEmailFld]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="KEmailFld"
+                          externalMetadataColumnId="Package\MRR\Loading MRR\MRR.Inputs[OLE DB Destination Input].ExternalColumns[KEmailFld]"
+                          lineageId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].Columns[KEmailFld]" />
+                        <inputColumn
+                          refId="Package\MRR\Loading MRR\MRR.Inputs[OLE DB Destination Input].Columns[KPhoneFld]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="KPhoneFld"
+                          externalMetadataColumnId="Package\MRR\Loading MRR\MRR.Inputs[OLE DB Destination Input].ExternalColumns[KPhoneFld]"
+                          lineageId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].Columns[KPhoneFld]" />
+                        <inputColumn
+                          refId="Package\MRR\Loading MRR\MRR.Inputs[OLE DB Destination Input].Columns[KPhone2Fld]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="KPhone2Fld"
+                          externalMetadataColumnId="Package\MRR\Loading MRR\MRR.Inputs[OLE DB Destination Input].ExternalColumns[KPhone2Fld]"
+                          lineageId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].Columns[KPhone2Fld]" />
+                        <inputColumn
+                          refId="Package\MRR\Loading MRR\MRR.Inputs[OLE DB Destination Input].Columns[KBirthDateFld]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="KBirthDateFld"
+                          externalMetadataColumnId="Package\MRR\Loading MRR\MRR.Inputs[OLE DB Destination Input].ExternalColumns[KBirthDateFld]"
+                          lineageId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].Columns[KBirthDateFld]" />
+                        <inputColumn
+                          refId="Package\MRR\Loading MRR\MRR.Inputs[OLE DB Destination Input].Columns[KGenderFld]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="KGenderFld"
+                          externalMetadataColumnId="Package\MRR\Loading MRR\MRR.Inputs[OLE DB Destination Input].ExternalColumns[KGenderFld]"
+                          lineageId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].Columns[KGenderFld]" />
+                        <inputColumn
+                          refId="Package\MRR\Loading MRR\MRR.Inputs[OLE DB Destination Input].Columns[KStatusFld]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="KStatusFld"
+                          externalMetadataColumnId="Package\MRR\Loading MRR\MRR.Inputs[OLE DB Destination Input].ExternalColumns[KStatusFld]"
+                          lineageId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].Columns[KStatusFld]" />
+                        <inputColumn
+                          refId="Package\MRR\Loading MRR\MRR.Inputs[OLE DB Destination Input].Columns[KWorkHourFld]"
+                          cachedDataType="i4"
+                          cachedName="KWorkHourFld"
+                          externalMetadataColumnId="Package\MRR\Loading MRR\MRR.Inputs[OLE DB Destination Input].ExternalColumns[KWorkHourFld]"
+                          lineageId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].Columns[KWorkHourFld]" />
+                        <inputColumn
+                          refId="Package\MRR\Loading MRR\MRR.Inputs[OLE DB Destination Input].Columns[KCourseTypesFld]"
+                          cachedDataType="wstr"
+                          cachedLength="4000"
+                          cachedName="KCourseTypesFld"
+                          externalMetadataColumnId="Package\MRR\Loading MRR\MRR.Inputs[OLE DB Destination Input].ExternalColumns[KCourseTypesFld]"
+                          lineageId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].Columns[KCourseTypesFld]" />
+                        <inputColumn
+                          refId="Package\MRR\Loading MRR\MRR.Inputs[OLE DB Destination Input].Columns[KCityFld]"
+                          cachedDataType="i4"
+                          cachedName="KCityFld"
+                          externalMetadataColumnId="Package\MRR\Loading MRR\MRR.Inputs[OLE DB Destination Input].ExternalColumns[KCityFld]"
+                          lineageId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].Columns[KCityFld]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\MRR\Loading MRR\MRR.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                          dataType="i4"
+                          name="id" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Loading MRR\MRR.Inputs[OLE DB Destination Input].ExternalColumns[KLastNameFld]"
+                          dataType="wstr"
+                          length="50"
+                          name="KLastNameFld" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Loading MRR\MRR.Inputs[OLE DB Destination Input].ExternalColumns[KFirstNameFld]"
+                          dataType="wstr"
+                          length="50"
+                          name="KFirstNameFld" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Loading MRR\MRR.Inputs[OLE DB Destination Input].ExternalColumns[KEmailFld]"
+                          dataType="wstr"
+                          length="50"
+                          name="KEmailFld" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Loading MRR\MRR.Inputs[OLE DB Destination Input].ExternalColumns[KPhoneFld]"
+                          dataType="wstr"
+                          length="20"
+                          name="KPhoneFld" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Loading MRR\MRR.Inputs[OLE DB Destination Input].ExternalColumns[KPhone2Fld]"
+                          dataType="wstr"
+                          length="20"
+                          name="KPhone2Fld" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Loading MRR\MRR.Inputs[OLE DB Destination Input].ExternalColumns[KBirthDateFld]"
+                          dataType="dbTimeStamp"
+                          name="KBirthDateFld" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Loading MRR\MRR.Inputs[OLE DB Destination Input].ExternalColumns[KGenderFld]"
+                          dataType="wstr"
+                          length="50"
+                          name="KGenderFld" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Loading MRR\MRR.Inputs[OLE DB Destination Input].ExternalColumns[KStatusFld]"
+                          dataType="wstr"
+                          length="50"
+                          name="KStatusFld" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Loading MRR\MRR.Inputs[OLE DB Destination Input].ExternalColumns[KWorkHourFld]"
+                          dataType="i4"
+                          name="KWorkHourFld" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Loading MRR\MRR.Inputs[OLE DB Destination Input].ExternalColumns[KCourseTypesFld]"
+                          dataType="wstr"
+                          length="4000"
+                          name="KCourseTypesFld" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Loading MRR\MRR.Inputs[OLE DB Destination Input].ExternalColumns[KCityFld]"
+                          dataType="i4"
+                          name="KCityFld" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\MRR\Loading MRR\MRR.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\MRR\Loading MRR\MRR.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\MRR\Loading MRR\MRR.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\MRR\Loading MRR\MRR.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\MRR\Loading MRR\MRR.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\MRR\Loading MRR\MRR.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\MRR\Loading MRR\Source"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="Source"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[KLecturersTbl]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1255</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\MRR\Loading MRR\Source.Connections[OleDbConnection]"
+                      connectionManagerID="{25F144E7-79B3-466F-92A5-98388E81CC2F}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LocalHost.NAYA_OLTP]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].Columns[id]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                          lineageId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].Columns[id]"
+                          name="id"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].Columns[KLastNameFld]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].ExternalColumns[KLastNameFld]"
+                          length="50"
+                          lineageId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].Columns[KLastNameFld]"
+                          name="KLastNameFld"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].Columns[KFirstNameFld]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].ExternalColumns[KFirstNameFld]"
+                          length="50"
+                          lineageId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].Columns[KFirstNameFld]"
+                          name="KFirstNameFld"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].Columns[KEmailFld]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].ExternalColumns[KEmailFld]"
+                          length="50"
+                          lineageId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].Columns[KEmailFld]"
+                          name="KEmailFld"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].Columns[KPhoneFld]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].ExternalColumns[KPhoneFld]"
+                          length="20"
+                          lineageId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].Columns[KPhoneFld]"
+                          name="KPhoneFld"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].Columns[KPhone2Fld]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].ExternalColumns[KPhone2Fld]"
+                          length="20"
+                          lineageId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].Columns[KPhone2Fld]"
+                          name="KPhone2Fld"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].Columns[KBirthDateFld]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].ExternalColumns[KBirthDateFld]"
+                          lineageId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].Columns[KBirthDateFld]"
+                          name="KBirthDateFld"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].Columns[KGenderFld]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].ExternalColumns[KGenderFld]"
+                          length="50"
+                          lineageId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].Columns[KGenderFld]"
+                          name="KGenderFld"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].Columns[KStatusFld]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].ExternalColumns[KStatusFld]"
+                          length="50"
+                          lineageId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].Columns[KStatusFld]"
+                          name="KStatusFld"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].Columns[KWorkHourFld]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].ExternalColumns[KWorkHourFld]"
+                          lineageId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].Columns[KWorkHourFld]"
+                          name="KWorkHourFld"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].Columns[KCourseTypesFld]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].ExternalColumns[KCourseTypesFld]"
+                          length="4000"
+                          lineageId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].Columns[KCourseTypesFld]"
+                          name="KCourseTypesFld"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].Columns[KCityFld]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].ExternalColumns[KCityFld]"
+                          lineageId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].Columns[KCityFld]"
+                          name="KCityFld"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                          dataType="i4"
+                          name="id" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].ExternalColumns[KIDFld]"
+                          dataType="i4"
+                          name="KIDFld" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].ExternalColumns[KLastNameFld]"
+                          dataType="wstr"
+                          length="50"
+                          name="KLastNameFld" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].ExternalColumns[KFirstNameFld]"
+                          dataType="wstr"
+                          length="50"
+                          name="KFirstNameFld" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].ExternalColumns[KEmailFld]"
+                          dataType="wstr"
+                          length="50"
+                          name="KEmailFld" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].ExternalColumns[KPhoneFld]"
+                          dataType="wstr"
+                          length="20"
+                          name="KPhoneFld" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].ExternalColumns[KPhone2Fld]"
+                          dataType="wstr"
+                          length="20"
+                          name="KPhone2Fld" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].ExternalColumns[KRemarksFld]"
+                          dataType="wstr"
+                          length="4000"
+                          name="KRemarksFld" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].ExternalColumns[KpictureFld]"
+                          dataType="wstr"
+                          length="100"
+                          name="KpictureFld" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].ExternalColumns[KBirthDateFld]"
+                          dataType="dbTimeStamp"
+                          name="KBirthDateFld" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].ExternalColumns[KGenderFld]"
+                          dataType="wstr"
+                          length="50"
+                          name="KGenderFld" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].ExternalColumns[updateduserid]"
+                          dataType="i4"
+                          name="updateduserid" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].ExternalColumns[updateddate]"
+                          dataType="dbTimeStamp"
+                          name="updateddate" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].ExternalColumns[containertable]"
+                          dataType="wstr"
+                          length="50"
+                          name="containertable" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].ExternalColumns[containerid]"
+                          dataType="i4"
+                          name="containerid" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].ExternalColumns[parentid]"
+                          dataType="i4"
+                          name="parentid" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].ExternalColumns[KStatusFld]"
+                          dataType="wstr"
+                          length="50"
+                          name="KStatusFld" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].ExternalColumns[KActiveFld]"
+                          dataType="wstr"
+                          length="50"
+                          name="KActiveFld" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].ExternalColumns[KZipCodeFld]"
+                          dataType="wstr"
+                          length="50"
+                          name="KZipCodeFld" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].ExternalColumns[KStreetFld]"
+                          dataType="wstr"
+                          length="50"
+                          name="KStreetFld" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].ExternalColumns[KCityFld]"
+                          dataType="i4"
+                          name="KCityFld" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].ExternalColumns[KAddressFld]"
+                          dataType="wstr"
+                          length="4000"
+                          name="KAddressFld" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].ExternalColumns[KWorkHourFld]"
+                          dataType="i4"
+                          name="KWorkHourFld" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].ExternalColumns[KUserFld]"
+                          dataType="i4"
+                          name="KUserFld" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].ExternalColumns[KRegPercForSalaryFld]"
+                          dataType="i4"
+                          name="KRegPercForSalaryFld" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].ExternalColumns[KColorFld]"
+                          dataType="wstr"
+                          length="7"
+                          name="KColorFld" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].ExternalColumns[KWeeklyEmailReminderFld]"
+                          dataType="wstr"
+                          length="1"
+                          name="KWeeklyEmailReminderFld" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].ExternalColumns[KDailyEmailReminderFld]"
+                          dataType="wstr"
+                          length="1"
+                          name="KDailyEmailReminderFld" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].ExternalColumns[KDailySMSReminderFld]"
+                          dataType="wstr"
+                          length="1"
+                          name="KDailySMSReminderFld" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].ExternalColumns[KEmployeeOrIndependentFld]"
+                          dataType="wstr"
+                          length="5"
+                          name="KEmployeeOrIndependentFld" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].ExternalColumns[KCategoriesFld]"
+                          dataType="wstr"
+                          length="4000"
+                          name="KCategoriesFld" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output].ExternalColumns[KCourseTypesFld]"
+                          dataType="wstr"
+                          length="4000"
+                          name="KCourseTypesFld" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                        <outputColumn
+                          refId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Error Output].Columns[id]"
+                          dataType="i4"
+                          lineageId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Error Output].Columns[id]"
+                          name="id" />
+                        <outputColumn
+                          refId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Error Output].Columns[KLastNameFld]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Error Output].Columns[KLastNameFld]"
+                          name="KLastNameFld" />
+                        <outputColumn
+                          refId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Error Output].Columns[KFirstNameFld]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Error Output].Columns[KFirstNameFld]"
+                          name="KFirstNameFld" />
+                        <outputColumn
+                          refId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Error Output].Columns[KEmailFld]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Error Output].Columns[KEmailFld]"
+                          name="KEmailFld" />
+                        <outputColumn
+                          refId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Error Output].Columns[KPhoneFld]"
+                          dataType="wstr"
+                          length="20"
+                          lineageId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Error Output].Columns[KPhoneFld]"
+                          name="KPhoneFld" />
+                        <outputColumn
+                          refId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Error Output].Columns[KPhone2Fld]"
+                          dataType="wstr"
+                          length="20"
+                          lineageId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Error Output].Columns[KPhone2Fld]"
+                          name="KPhone2Fld" />
+                        <outputColumn
+                          refId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Error Output].Columns[KBirthDateFld]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Error Output].Columns[KBirthDateFld]"
+                          name="KBirthDateFld" />
+                        <outputColumn
+                          refId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Error Output].Columns[KGenderFld]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Error Output].Columns[KGenderFld]"
+                          name="KGenderFld" />
+                        <outputColumn
+                          refId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Error Output].Columns[KStatusFld]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Error Output].Columns[KStatusFld]"
+                          name="KStatusFld" />
+                        <outputColumn
+                          refId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Error Output].Columns[KWorkHourFld]"
+                          dataType="i4"
+                          lineageId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Error Output].Columns[KWorkHourFld]"
+                          name="KWorkHourFld" />
+                        <outputColumn
+                          refId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Error Output].Columns[KCourseTypesFld]"
+                          dataType="wstr"
+                          length="4000"
+                          lineageId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Error Output].Columns[KCourseTypesFld]"
+                          name="KCourseTypesFld" />
+                        <outputColumn
+                          refId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Error Output].Columns[KCityFld]"
+                          dataType="i4"
+                          lineageId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Error Output].Columns[KCityFld]"
+                          name="KCityFld" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\MRR\Loading MRR.Paths[OLE DB Source Output]"
+                  endId="Package\MRR\Loading MRR\MRR.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\MRR\Loading MRR\Source.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\MRR\Truncate MRR"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{5160888b-5f4e-4c27-b8eb-c2f128b857ee}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Truncate MRR"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{2003A105-5B95-4A54-8579-D169F9706819}"
+              SQLTask:SqlStatementSource="truncate TABLE MRR_KLecturersTbl&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\MRR.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{3e9710d1-e4ce-498f-a5e6-8f0fc030ba7c}"
+          DTS:From="Package\MRR\Truncate MRR"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\MRR\Loading MRR" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Package complete"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{6a87ba41-a906-43a3-9946-e4aa4efbbe09}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Package complete"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:EventHandlers>
+        <DTS:EventHandler
+          DTS:refId="Package\Package complete.EventHandlers[OnTaskFailed]"
+          DTS:CreationName="OnTaskFailed"
+          DTS:DTSID="{88f39394-e7b2-4f25-83f9-79a30b1b919b}"
+          DTS:EventID="0"
+          DTS:EventName="OnTaskFailed"
+          DTS:LocaleID="-1">
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:Description="The propagate property of the event"
+              DTS:DTSID="{eaf7eeee-ecc3-4e52-9e6d-8b778c4a346e}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="System"
+              DTS:ObjectName="Propagate">
+              <DTS:VariableValue
+                DTS:DataType="11">-1</DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\Package complete.EventHandlers[OnTaskFailed]\Task Failed"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{999db86b-8910-4f53-b42d-6c6192acc26e}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Task Failed"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{6A4B2EBC-6475-4775-927B-47497EF6EB74}"
+                  SQLTask:SqlStatementSource="UPDATE  [dbo].[MNG_logging]&#xA;&#xA;   SET&#xA;    end_time = getdate(),&#xA;    Status = 'Sucsees'&#xA; WHERE [id] = (select max(id)&#xA;                    from [dbo].[MNG_logging]&#xA;                             where [etl_name]= ? and [Status] is null)&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+        </DTS:EventHandler>
+      </DTS:EventHandlers>
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{6A4B2EBC-6475-4775-927B-47497EF6EB74}"
+          SQLTask:SqlStatementSource="UPDATE  [dbo].[MNG_logging]&#xA;&#xA;   SET&#xA;    end_time = getdate(),&#xA;    Status = 'Sucsees'&#xA; WHERE [id] = (select max(id)&#xA;                    from [dbo].[MNG_logging]&#xA;                             where [etl_name]= ? and [Status] is null)&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="NewParameterName"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="130"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Package start"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{b770273d-8354-4206-9939-71913f62320a}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Package start"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{6A4B2EBC-6475-4775-927B-47497EF6EB74}"
+          SQLTask:SqlStatementSource="INSERT INTO [dbo].[MNG_logging]&#xA;           ([etl_name]&#xA;           ,[MachineName]&#xA;           ,[Start_Time])&#xA;     VALUES&#xA;           (?, ?, getdate())&#xA;       " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="NewParameterName"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="130"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="NewParameterName"
+            SQLTask:DtsVariableName="System::MachineName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="130"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\STG"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{B0D9C77E-2BA0-44EF-AE34-6EEA9B3B5D30}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="STG">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\STG\Load STG"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{B8CD5155-A160-42DC-A0AC-3252E9F304C9}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Load STG"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\STG\Load STG\Add 3 Columns"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="Add 3 Columns"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\STG\Load STG\Add 3 Columns.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\STG\Load STG\Add 3 Columns.Inputs[Derived Column Input].Columns[KLastNameFld]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="KLastNameFld"
+                          lineageId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].Columns[KLastNameFld]" />
+                        <inputColumn
+                          refId="Package\STG\Load STG\Add 3 Columns.Inputs[Derived Column Input].Columns[KFirstNameFld]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="KFirstNameFld"
+                          lineageId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].Columns[KFirstNameFld]" />
+                        <inputColumn
+                          refId="Package\STG\Load STG\Add 3 Columns.Inputs[Derived Column Input].Columns[KPhoneFld]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="KPhoneFld"
+                          lineageId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].Columns[KPhoneFld]" />
+                        <inputColumn
+                          refId="Package\STG\Load STG\Add 3 Columns.Inputs[Derived Column Input].Columns[KPhone2Fld]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="KPhone2Fld"
+                          lineageId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].Columns[KPhone2Fld]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\STG\Load STG\Add 3 Columns.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\STG\Load STG\Add 3 Columns.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\STG\Load STG\Add 3 Columns.Outputs[Derived Column Output].Columns[dw_date]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\STG\Load STG\Add 3 Columns.Outputs[Derived Column Output].Columns[dw_date]"
+                          name="dw_date"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[GETDATE]()</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">GETDATE()</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\STG\Load STG\Add 3 Columns.Outputs[Derived Column Output].Columns[FullName]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="101"
+                          lineageId="Package\STG\Load STG\Add 3 Columns.Outputs[Derived Column Output].Columns[FullName]"
+                          name="FullName"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">#{Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].Columns[KFirstNameFld]} + " " + #{Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].Columns[KLastNameFld]}</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">KFirstNameFld + " " + KLastNameFld</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\STG\Load STG\Add 3 Columns.Outputs[Derived Column Output].Columns[Phone]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="41"
+                          lineageId="Package\STG\Load STG\Add 3 Columns.Outputs[Derived Column Output].Columns[Phone]"
+                          name="Phone"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">#{Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].Columns[KPhoneFld]} + "/" + #{Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].Columns[KPhone2Fld]}</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">KPhoneFld + "/" + KPhone2Fld</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\STG\Load STG\Add 3 Columns.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\STG\Load STG\Add 3 Columns.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\STG\Load STG\Add 3 Columns.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\STG\Load STG\Add 3 Columns.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\STG\Load STG\Add 3 Columns.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\STG\Load STG\Add 3 Columns.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\STG\Load STG\MRR"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="MRR"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[MRR_KLecturersTbl]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1255</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\STG\Load STG\MRR.Connections[OleDbConnection]"
+                      connectionManagerID="{2003A105-5B95-4A54-8579-D169F9706819}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LocalHost.NAYA_MRR_STG]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].Columns[LecturerId]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                          lineageId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].Columns[LecturerId]"
+                          name="LecturerId"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].Columns[KLastNameFld]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].ExternalColumns[KLastNameFld]"
+                          length="50"
+                          lineageId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].Columns[KLastNameFld]"
+                          name="KLastNameFld"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].Columns[KFirstNameFld]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].ExternalColumns[KFirstNameFld]"
+                          length="50"
+                          lineageId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].Columns[KFirstNameFld]"
+                          name="KFirstNameFld"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].Columns[Email]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].ExternalColumns[KEmailFld]"
+                          length="50"
+                          lineageId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].Columns[Email]"
+                          name="Email"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].Columns[KPhoneFld]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].ExternalColumns[KPhoneFld]"
+                          length="20"
+                          lineageId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].Columns[KPhoneFld]"
+                          name="KPhoneFld"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].Columns[KPhone2Fld]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].ExternalColumns[KPhone2Fld]"
+                          length="20"
+                          lineageId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].Columns[KPhone2Fld]"
+                          name="KPhone2Fld"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].Columns[BirthDate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].ExternalColumns[KBirthDateFld]"
+                          lineageId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].Columns[BirthDate]"
+                          name="BirthDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].Columns[Gender]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].ExternalColumns[KGenderFld]"
+                          length="50"
+                          lineageId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].Columns[Gender]"
+                          name="Gender"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].Columns[Status]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].ExternalColumns[KStatusFld]"
+                          length="50"
+                          lineageId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].Columns[Status]"
+                          name="Status"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].Columns[WorkingHours]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].ExternalColumns[KWorkHourFld]"
+                          lineageId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].Columns[WorkingHours]"
+                          name="WorkingHours"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].Columns[Course]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].ExternalColumns[KCourseTypesFld]"
+                          length="4000"
+                          lineageId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].Columns[Course]"
+                          name="Course"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].Columns[CityId]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].ExternalColumns[KCityFld]"
+                          lineageId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].Columns[CityId]"
+                          name="CityId"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                          dataType="i4"
+                          name="id" />
+                        <externalMetadataColumn
+                          refId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].ExternalColumns[KLastNameFld]"
+                          dataType="wstr"
+                          length="50"
+                          name="KLastNameFld" />
+                        <externalMetadataColumn
+                          refId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].ExternalColumns[KFirstNameFld]"
+                          dataType="wstr"
+                          length="50"
+                          name="KFirstNameFld" />
+                        <externalMetadataColumn
+                          refId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].ExternalColumns[KEmailFld]"
+                          dataType="wstr"
+                          length="50"
+                          name="KEmailFld" />
+                        <externalMetadataColumn
+                          refId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].ExternalColumns[KPhoneFld]"
+                          dataType="wstr"
+                          length="20"
+                          name="KPhoneFld" />
+                        <externalMetadataColumn
+                          refId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].ExternalColumns[KPhone2Fld]"
+                          dataType="wstr"
+                          length="20"
+                          name="KPhone2Fld" />
+                        <externalMetadataColumn
+                          refId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].ExternalColumns[KBirthDateFld]"
+                          dataType="dbTimeStamp"
+                          name="KBirthDateFld" />
+                        <externalMetadataColumn
+                          refId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].ExternalColumns[KGenderFld]"
+                          dataType="wstr"
+                          length="50"
+                          name="KGenderFld" />
+                        <externalMetadataColumn
+                          refId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].ExternalColumns[KStatusFld]"
+                          dataType="wstr"
+                          length="50"
+                          name="KStatusFld" />
+                        <externalMetadataColumn
+                          refId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].ExternalColumns[KWorkHourFld]"
+                          dataType="i4"
+                          name="KWorkHourFld" />
+                        <externalMetadataColumn
+                          refId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].ExternalColumns[KCourseTypesFld]"
+                          dataType="wstr"
+                          length="4000"
+                          name="KCourseTypesFld" />
+                        <externalMetadataColumn
+                          refId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].ExternalColumns[KCityFld]"
+                          dataType="i4"
+                          name="KCityFld" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Error Output].Columns[id]"
+                          dataType="i4"
+                          lineageId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Error Output].Columns[id]"
+                          name="id" />
+                        <outputColumn
+                          refId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Error Output].Columns[KLastNameFld]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Error Output].Columns[KLastNameFld]"
+                          name="KLastNameFld" />
+                        <outputColumn
+                          refId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Error Output].Columns[KFirstNameFld]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Error Output].Columns[KFirstNameFld]"
+                          name="KFirstNameFld" />
+                        <outputColumn
+                          refId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Error Output].Columns[KEmailFld]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Error Output].Columns[KEmailFld]"
+                          name="KEmailFld" />
+                        <outputColumn
+                          refId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Error Output].Columns[KPhoneFld]"
+                          dataType="wstr"
+                          length="20"
+                          lineageId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Error Output].Columns[KPhoneFld]"
+                          name="KPhoneFld" />
+                        <outputColumn
+                          refId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Error Output].Columns[KPhone2Fld]"
+                          dataType="wstr"
+                          length="20"
+                          lineageId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Error Output].Columns[KPhone2Fld]"
+                          name="KPhone2Fld" />
+                        <outputColumn
+                          refId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Error Output].Columns[KBirthDateFld]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Error Output].Columns[KBirthDateFld]"
+                          name="KBirthDateFld" />
+                        <outputColumn
+                          refId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Error Output].Columns[KGenderFld]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Error Output].Columns[KGenderFld]"
+                          name="KGenderFld" />
+                        <outputColumn
+                          refId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Error Output].Columns[KStatusFld]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Error Output].Columns[KStatusFld]"
+                          name="KStatusFld" />
+                        <outputColumn
+                          refId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Error Output].Columns[KWorkHourFld]"
+                          dataType="i4"
+                          lineageId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Error Output].Columns[KWorkHourFld]"
+                          name="KWorkHourFld" />
+                        <outputColumn
+                          refId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Error Output].Columns[KCourseTypesFld]"
+                          dataType="wstr"
+                          length="4000"
+                          lineageId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Error Output].Columns[KCourseTypesFld]"
+                          name="KCourseTypesFld" />
+                        <outputColumn
+                          refId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Error Output].Columns[KCityFld]"
+                          dataType="i4"
+                          lineageId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Error Output].Columns[KCityFld]"
+                          name="KCityFld" />
+                        <outputColumn
+                          refId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\STG\Load STG\STG"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="STG"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[STG_DIMLecturers]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1255</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\STG\Load STG\STG.Connections[OleDbConnection]"
+                      connectionManagerID="{2003A105-5B95-4A54-8579-D169F9706819}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LocalHost.NAYA_MRR_STG]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\STG\Load STG\STG.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\STG\Load STG\STG.Inputs[OLE DB Destination Input].Columns[LecturerId]"
+                          cachedDataType="i4"
+                          cachedName="LecturerId"
+                          externalMetadataColumnId="Package\STG\Load STG\STG.Inputs[OLE DB Destination Input].ExternalColumns[LecturerId]"
+                          lineageId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].Columns[LecturerId]" />
+                        <inputColumn
+                          refId="Package\STG\Load STG\STG.Inputs[OLE DB Destination Input].Columns[Email]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Email"
+                          externalMetadataColumnId="Package\STG\Load STG\STG.Inputs[OLE DB Destination Input].ExternalColumns[Email]"
+                          lineageId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].Columns[Email]" />
+                        <inputColumn
+                          refId="Package\STG\Load STG\STG.Inputs[OLE DB Destination Input].Columns[BirthDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="BirthDate"
+                          externalMetadataColumnId="Package\STG\Load STG\STG.Inputs[OLE DB Destination Input].ExternalColumns[BirthDate]"
+                          lineageId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].Columns[BirthDate]" />
+                        <inputColumn
+                          refId="Package\STG\Load STG\STG.Inputs[OLE DB Destination Input].Columns[Gender]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Gender"
+                          externalMetadataColumnId="Package\STG\Load STG\STG.Inputs[OLE DB Destination Input].ExternalColumns[Gender]"
+                          lineageId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].Columns[Gender]" />
+                        <inputColumn
+                          refId="Package\STG\Load STG\STG.Inputs[OLE DB Destination Input].Columns[Status]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Status"
+                          externalMetadataColumnId="Package\STG\Load STG\STG.Inputs[OLE DB Destination Input].ExternalColumns[Status]"
+                          lineageId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].Columns[Status]" />
+                        <inputColumn
+                          refId="Package\STG\Load STG\STG.Inputs[OLE DB Destination Input].Columns[WorkingHours]"
+                          cachedDataType="i4"
+                          cachedName="WorkingHours"
+                          externalMetadataColumnId="Package\STG\Load STG\STG.Inputs[OLE DB Destination Input].ExternalColumns[WorkingHours]"
+                          lineageId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].Columns[WorkingHours]" />
+                        <inputColumn
+                          refId="Package\STG\Load STG\STG.Inputs[OLE DB Destination Input].Columns[Course]"
+                          cachedDataType="wstr"
+                          cachedLength="4000"
+                          cachedName="Course"
+                          externalMetadataColumnId="Package\STG\Load STG\STG.Inputs[OLE DB Destination Input].ExternalColumns[Course]"
+                          lineageId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].Columns[Course]" />
+                        <inputColumn
+                          refId="Package\STG\Load STG\STG.Inputs[OLE DB Destination Input].Columns[CityId]"
+                          cachedDataType="i4"
+                          cachedName="CityId"
+                          externalMetadataColumnId="Package\STG\Load STG\STG.Inputs[OLE DB Destination Input].ExternalColumns[CityId]"
+                          lineageId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Output].Columns[CityId]" />
+                        <inputColumn
+                          refId="Package\STG\Load STG\STG.Inputs[OLE DB Destination Input].Columns[dw_date]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="dw_date"
+                          externalMetadataColumnId="Package\STG\Load STG\STG.Inputs[OLE DB Destination Input].ExternalColumns[dw_date]"
+                          lineageId="Package\STG\Load STG\Add 3 Columns.Outputs[Derived Column Output].Columns[dw_date]" />
+                        <inputColumn
+                          refId="Package\STG\Load STG\STG.Inputs[OLE DB Destination Input].Columns[FullName]"
+                          cachedDataType="wstr"
+                          cachedLength="101"
+                          cachedName="FullName"
+                          externalMetadataColumnId="Package\STG\Load STG\STG.Inputs[OLE DB Destination Input].ExternalColumns[FullName]"
+                          lineageId="Package\STG\Load STG\Add 3 Columns.Outputs[Derived Column Output].Columns[FullName]" />
+                        <inputColumn
+                          refId="Package\STG\Load STG\STG.Inputs[OLE DB Destination Input].Columns[Phone]"
+                          cachedDataType="wstr"
+                          cachedLength="41"
+                          cachedName="Phone"
+                          externalMetadataColumnId="Package\STG\Load STG\STG.Inputs[OLE DB Destination Input].ExternalColumns[Phone]"
+                          lineageId="Package\STG\Load STG\Add 3 Columns.Outputs[Derived Column Output].Columns[Phone]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\STG\Load STG\STG.Inputs[OLE DB Destination Input].ExternalColumns[LecturerId]"
+                          dataType="i4"
+                          name="LecturerId" />
+                        <externalMetadataColumn
+                          refId="Package\STG\Load STG\STG.Inputs[OLE DB Destination Input].ExternalColumns[Email]"
+                          dataType="wstr"
+                          length="50"
+                          name="Email" />
+                        <externalMetadataColumn
+                          refId="Package\STG\Load STG\STG.Inputs[OLE DB Destination Input].ExternalColumns[BirthDate]"
+                          dataType="dbTimeStamp"
+                          name="BirthDate" />
+                        <externalMetadataColumn
+                          refId="Package\STG\Load STG\STG.Inputs[OLE DB Destination Input].ExternalColumns[Gender]"
+                          dataType="wstr"
+                          length="50"
+                          name="Gender" />
+                        <externalMetadataColumn
+                          refId="Package\STG\Load STG\STG.Inputs[OLE DB Destination Input].ExternalColumns[Status]"
+                          dataType="wstr"
+                          length="50"
+                          name="Status" />
+                        <externalMetadataColumn
+                          refId="Package\STG\Load STG\STG.Inputs[OLE DB Destination Input].ExternalColumns[WorkingHours]"
+                          dataType="i4"
+                          name="WorkingHours" />
+                        <externalMetadataColumn
+                          refId="Package\STG\Load STG\STG.Inputs[OLE DB Destination Input].ExternalColumns[Course]"
+                          dataType="wstr"
+                          length="4000"
+                          name="Course" />
+                        <externalMetadataColumn
+                          refId="Package\STG\Load STG\STG.Inputs[OLE DB Destination Input].ExternalColumns[CityId]"
+                          dataType="i4"
+                          name="CityId" />
+                        <externalMetadataColumn
+                          refId="Package\STG\Load STG\STG.Inputs[OLE DB Destination Input].ExternalColumns[dw_date]"
+                          dataType="dbTimeStamp"
+                          name="dw_date" />
+                        <externalMetadataColumn
+                          refId="Package\STG\Load STG\STG.Inputs[OLE DB Destination Input].ExternalColumns[FullName]"
+                          dataType="wstr"
+                          length="101"
+                          name="FullName" />
+                        <externalMetadataColumn
+                          refId="Package\STG\Load STG\STG.Inputs[OLE DB Destination Input].ExternalColumns[Phone]"
+                          dataType="wstr"
+                          length="41"
+                          name="Phone" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\STG\Load STG\STG.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\STG\Load STG\STG.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\STG\Load STG\STG.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\STG\Load STG\STG.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\STG\Load STG\STG.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\STG\Load STG\STG.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\STG\Load STG.Paths[Derived Column Output]"
+                  endId="Package\STG\Load STG\STG.Inputs[OLE DB Destination Input]"
+                  name="Derived Column Output"
+                  startId="Package\STG\Load STG\Add 3 Columns.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\STG\Load STG.Paths[OLE DB Source Output]"
+                  endId="Package\STG\Load STG\Add 3 Columns.Inputs[Derived Column Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\STG\Load STG\MRR.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\STG\Truncate STG"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{0f3fbe82-c352-4c83-bac2-20c147f07f54}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Truncate STG"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{2003A105-5B95-4A54-8579-D169F9706819}"
+              SQLTask:SqlStatementSource="truncate TABLE STG_DIMLecturers" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\STG.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{ED701998-0276-400F-80FC-93D692DCAD78}"
+          DTS:From="Package\STG\Truncate STG"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\STG\Load STG" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{606DDD0E-24D2-4737-8288-22AEF333DD33}"
+      DTS:From="Package\Package start"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\MRR" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{23EDD0BA-6D54-453A-AE20-EDCB61ABB5A9}"
+      DTS:From="Package\MRR"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\STG" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{C6436524-A917-4DD4-96F8-D1C095EBB5F0}"
+      DTS:From="Package\STG"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\DWH" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{98556EF5-B78D-4915-9D06-B0CA34A78DAF}"
+      DTS:From="Package\DWH"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\Package complete" />
+  </DTS:PrecedenceConstraints>
+  <DTS:EventHandlers>
+    <DTS:EventHandler
+      DTS:refId="Package.EventHandlers[OnError]"
+      DTS:CreationName="OnError"
+      DTS:DTSID="{E0C8F3F6-0A1E-47BB-AB0E-166A5BF04E5E}"
+      DTS:EventID="0"
+      DTS:EventName="OnError"
+      DTS:LocaleID="-1">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:Description="The propagate property of the event"
+          DTS:DTSID="{6E21DB21-EE79-4787-8DF4-8220BBB51ED0}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="System"
+          DTS:ObjectName="Propagate">
+          <DTS:VariableValue
+            DTS:DataType="11">-1</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package.EventHandlers[OnError]\Task Failed"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{7b2a788c-5f24-4771-a250-fc75b03d8cba}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Task Failed"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{6A4B2EBC-6475-4775-927B-47497EF6EB74}"
+              SQLTask:SqlStatementSource="UPDATE  [dbo].[MNG_logging]&#xA;&#xA;   SET&#xA;    end_time = getdate(),&#xA;    Status = 'Fail'&#xA; WHERE [id] = (select max(id)&#xA;                    from [dbo].[MNG_logging]&#xA;                             where [etl_name]= ? and [Status] is null)&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="NewParameterName"
+                SQLTask:DtsVariableName="System::PackageName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:EventHandler>
+  </DTS:EventHandlers>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="128.8,41.6"
+          Id="Package\DWH\Load DWH"
+          TopLeft="5.5,5.49999999999995" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="150.4,102.4"
+          Size="140,145.6"
+          Id="Package\DWH"
+          TopLeft="17.5000000000001,721.5" />
+        <NodeLayout
+          Size="141.6,41.6"
+          Id="Package\MRR\Loading MRR"
+          TopLeft="7.50000000000001,107.1" />
+        <NodeLayout
+          Size="145.6,41.6"
+          Id="Package\MRR\Truncate MRR"
+          TopLeft="5.50000000000001,5.49999999999995" />
+        <EdgeLayout
+          Id="Package\MRR.PrecedenceConstraints[Constraint]"
+          TopLeft="78.3,47.1">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999999"
+              Start="0,0"
+              End="0,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="156.8,204"
+          Size="156.8,247.2"
+          Id="Package\MRR"
+          TopLeft="9.10000000000002,107.1" />
+        <NodeLayout
+          Size="164,41.6"
+          Id="Package\Package complete"
+          TopLeft="5.50000000000011,927.1" />
+        <NodeLayout
+          Size="141.6,41.6"
+          Id="Package\Package start"
+          TopLeft="16.7,5.49999999999995" />
+        <NodeLayout
+          Size="125.6,41.6"
+          Id="Package\STG\Load STG"
+          TopLeft="14.3,107.1" />
+        <NodeLayout
+          Size="143.2,41.6"
+          Id="Package\STG\Truncate STG"
+          TopLeft="5.50000000000001,5.49999999999995" />
+        <EdgeLayout
+          Id="Package\STG.PrecedenceConstraints[Constraint]"
+          TopLeft="77.1,47.1">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999999"
+              Start="0,0"
+              End="0,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="154.4,204"
+          Size="154.4,247.2"
+          Id="Package\STG"
+          TopLeft="10.3000000000001,414.3" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="87.5,47.1">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999999"
+              Start="0,0"
+              End="0,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="87.5000000000001,354.3">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999999"
+              Start="0,0"
+              End="0,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="87.5000000000001,661.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="87.5000000000001,867.1">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999999"
+              Start="0,0"
+              End="0,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <DtsEventHandler
+    design-time-name="Package.EventHandlers[OnError]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="132,41.6"
+          Id="Package.EventHandlers[OnError]\Task Failed"
+          TopLeft="438.99999345839,208.999996885657" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <TaskHost
+    design-time-name="Package\DWH\Load DWH">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="112.8,41.6"
+          Id="Package\DWH\Load DWH\Lookup"
+          TopLeft="278.999995842576,151.999997735024" />
+        <NodeLayout
+          Size="131.2,41.6"
+          Id="Package\DWH\Load DWH\insert DWH"
+          TopLeft="207.999996900559,246.999996319413" />
+        <NodeLayout
+          Size="100,41.6"
+          Id="Package\DWH\Load DWH\STG"
+          TopLeft="291.999995648861,60.9999990910292" />
+        <NodeLayout
+          Size="137.6,41.6"
+          Id="Package\DWH\Load DWH\update DWH"
+          TopLeft="406.499994024634,257.499996244907" />
+        <EdgeLayout
+          Id="Package\DWH\Load DWH.Paths[OLE DB Source Output]"
+          TopLeft="338.699995745719,102.599999091029">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,49.3999986439943"
+              Start="0,0"
+              End="0,41.8999986439943">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.8999986439943" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DWH\Load DWH.Paths[Lookup No Match Output]"
+          TopLeft="335.399995842576,193.599997735024">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-61.7999989420176,53.3999985843897"
+              Start="0,0"
+              End="-61.7999989420176,45.8999985843897">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.6999992921949" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.6999992921949"
+                    Point2="0,26.6999992921949"
+                    Point3="-4,26.6999992921949" />
+                  <mssgle:LineSegment
+                    End="-57.7999989420176,26.6999992921949" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-57.7999989420176,26.6999992921949"
+                    Point2="-61.7999989420176,26.6999992921949"
+                    Point3="-61.7999989420176,30.6999992921949" />
+                  <mssgle:LineSegment
+                    End="-61.7999989420176,45.8999985843897" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-86.7063861897588,31.6999992921949,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DWH\Load DWH.Paths[Lookup Match Output]"
+          TopLeft="352.866662509243,193.599997735024">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="122.433331515392,63.8999985098839"
+              Start="0,0"
+              End="122.433331515392,56.3999985098839">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.0962231676729" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.0962231676729"
+                    Point2="0,26.0962231676729"
+                    Point3="4,26.0962231676729" />
+                  <mssgle:LineSegment
+                    End="118.433331515392,26.0962231676729" />
+                  <mssgle:CubicBezierSegment
+                    Point1="118.433331515392,26.0962231676729"
+                    Point2="122.433331515392,26.0962231676729"
+                    Point3="122.433331515392,30.0962231676729" />
+                  <mssgle:LineSegment
+                    End="122.433331515392,56.3999985098839" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="13.0252790389458,31.0962231676729,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DWH\Load DWH\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DIMLecturers]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DWH\Load DWH\insert DWH">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DWH\Load DWH\STG">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\MRR\Loading MRR">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="102.4,41.6"
+          Id="Package\MRR\Loading MRR\MRR"
+          TopLeft="264.999985521039,184.599998716315" />
+        <NodeLayout
+          Size="111.2,41.6"
+          Id="Package\MRR\Loading MRR\Source"
+          TopLeft="244.166653325989,56.3333329415984" />
+        <EdgeLayout
+          Id="Package\MRR\Loading MRR.Paths[OLE DB Source Output]"
+          TopLeft="299.766653325989,97.9333329415984">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="16.4333321950502,86.6666657747163"
+              Start="0,0"
+              End="16.4333321950502,79.1666657747163">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.3333328873582" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,39.3333328873582"
+                    Point2="0,43.3333328873582"
+                    Point3="4,43.3333328873582" />
+                  <mssgle:LineSegment
+                    End="12.4333321950502,43.3333328873582" />
+                  <mssgle:CubicBezierSegment
+                    Point1="12.4333321950502,43.3333328873582"
+                    Point2="16.4333321950502,43.3333328873582"
+                    Point3="16.4333321950502,47.3333328873582" />
+                  <mssgle:LineSegment
+                    End="16.4333321950502,79.1666657747163" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\MRR\Loading MRR\MRR">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\MRR\Loading MRR\Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <DtsEventHandler
+    design-time-name="Package\Package complete.EventHandlers[OnTaskFailed]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="132,41.6"
+          Id="Package\Package complete.EventHandlers[OnTaskFailed]\Task Failed"
+          TopLeft="279.999995827675,129.999998062849" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <TaskHost
+    design-time-name="Package\STG\Load STG">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="100,41.6"
+          Id="Package\STG\Load STG\STG"
+          TopLeft="309.99999538064,283.99999576807" />
+        <NodeLayout
+          Size="149.6,41.6"
+          Id="Package\STG\Load STG\Add 3 Columns"
+          TopLeft="241.999996393919,187.999997198582" />
+        <NodeLayout
+          Size="102.4,41.6"
+          Id="Package\STG\Load STG\MRR"
+          TopLeft="247.999996304512,110.999998345971" />
+        <EdgeLayout
+          Id="Package\STG\Load STG.Paths[Derived Column Output]"
+          TopLeft="316.799996393919,229.599997198582">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="43.199998986721,54.3999985694885"
+              Start="0,0"
+              End="43.199998986721,46.8999985694885">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.1999992847443" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.1999992847443"
+                    Point2="0,27.1999992847443"
+                    Point3="4,27.1999992847443" />
+                  <mssgle:LineSegment
+                    End="39.199998986721,27.1999992847443" />
+                  <mssgle:CubicBezierSegment
+                    Point1="39.199998986721,27.1999992847443"
+                    Point2="43.199998986721,27.1999992847443"
+                    Point3="43.199998986721,31.1999992847443" />
+                  <mssgle:LineSegment
+                    End="43.199998986721,46.8999985694885" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\STG\Load STG.Paths[OLE DB Source Output]"
+          TopLeft="299.199996304512,152.599998345971">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="17.600000089407,35.3999988526107"
+              Start="0,0"
+              End="17.600000089407,27.8999988526107">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.6999994263053" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.6999994263053"
+                    Point2="0,17.6999994263053"
+                    Point3="4,17.6999994263053" />
+                  <mssgle:LineSegment
+                    End="13.600000089407,17.6999994263053" />
+                  <mssgle:CubicBezierSegment
+                    Point1="13.600000089407,17.6999994263053"
+                    Point2="17.600000089407,17.6999994263053"
+                    Point3="17.600000089407,21.6999994263053" />
+                  <mssgle:LineSegment
+                    End="17.600000089407,27.8999988526107" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\STG\Load STG\STG">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\STG\Load STG\MRR">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
